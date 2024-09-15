@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+       <h2>Welcome to home Page!</h2>
+       <div>
+       <a href="/home">Home</a>
+       <a href="/createPost">new Post</a>
+       <a href="/profile">Profile</a>
+       </div>
+       <h1>Post Details</h1>
+    <div>
+       
+       <span th:each ="post:${allPost}" >
+         <strong>Photo:</strong> <br> <br>
+        <img th:if ="${post.photoBase64}"   th:src="'data:image/jpeg;base64,' + ${post.photoBase64}"  alt="Profile Photo" />
+       <strong>Caption:</strong> <span th:text ="${post.caption}"></span> 
+    <strong>Likes:</strong> <span th:text = "${post.likes}"></span>
+      <form action="/likePost" method="post">
+       <input type="hidden" name="id" th:value="${post.id}"/>
+         <input type="submit" value="like">
+      </form>
+      <strong>Comments:</strong> 
+    <form action="/addComment" method="post">
+    <span  th:each="comment:${post.comments}">
+       <div th:text="${comment}"></div>
+      
+    
+      </span>
+     <input type="hidden" name="id" th:value="${post.id}"/>
+     <textarea name="comments"></textarea>
+     <input type="submit" />
+    </form>
+        <hr>
+     </span>
+    </div>
+    <a href="/create">Back to Form</a>
+</body>
+</html>

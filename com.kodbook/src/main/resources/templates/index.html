@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+      <h1>
+      Welcome to Kodbook! 
+      </h1>
+      <form action="/login" method="post">
+         <label>USERNAME : </label>
+         <input type="text" placeholder="Enter Username" name="username"><br> <br>
+         <label>Password : </label>
+         <input type="password" placeholder="Enter password" name="password"  > <br> <br>
+         <input type="submit" value="login">
+         <a href="/openCreateAccount">Create account</a>
+      </form>
+       <span th:if="${message}">
+       <span th:text="${message}"></span>
+       </span>
+</body>
+</html>
